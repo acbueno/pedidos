@@ -9,6 +9,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import br.com.acbueno.pedidos.entity.Status;
 import br.com.acbueno.pedidos.enums.StatusType;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,6 +26,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@ApiModel(value = "StatusVO")
 public class StatusVO implements Serializable {
 
   private static final long serialVersionUID = 3107574877247384688L;
@@ -31,15 +34,20 @@ public class StatusVO implements Serializable {
   @JsonProperty("id")
   private Long id;
   
+  @ApiModelProperty(value = "itensAprovados", required = true)
   @JsonProperty("itensAprovados")
   private int itensAprovados;
   
+  @ApiModelProperty(value = "valorAprovado", required = true)
   @JsonProperty("valorAprovado")
   private int valorAprovado;
   
+  
+  @ApiModelProperty(value = "idPedido", required = true)
   @JsonProperty("idPedido")
   private long idPedido;
   
+  @ApiModelProperty(value = "status", required = true)
   @JsonProperty("status")
   private StatusType status;
  

@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.acbueno.pedidos.data.vo.PedidoVO;
 import br.com.acbueno.pedidos.service.PedidosServices;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping("/api/pedidos")
@@ -49,7 +52,8 @@ public class PedidoController {
     return pedidoVO;
 
   }
-
+  
+  @ApiOperation( value = "Retorna todos os pedidos cadastrados")
   @GetMapping(produces = {"application/json"})
   public ResponseEntity<?> findAll(@RequestParam(value = "page", defaultValue = "0") int page,
       @RequestParam(value = "lmiit", defaultValue = "12") int limit,
@@ -68,7 +72,7 @@ public class PedidoController {
 
 
   }
-
+  @ApiOperation( value = "Criar um novo pedido na base")
   @PostMapping(produces = {"application/json"}, consumes = {"application/json"})
   public PedidoVO create(@RequestBody PedidoVO pedidoVO) {
     PedidoVO pedVO = pedidosServices.create(pedidoVO);
@@ -76,14 +80,16 @@ public class PedidoController {
 
     return pedVO;
   }
-
+  
+  @ApiOperation( value = "Deleta um Pedido na base dados")
   @DeleteMapping("/{id}")
   public ResponseEntity<?> delete(Long id) {
     pedidosServices.deleteById(id);
 
     return ResponseEntity.ok().build();
   }
-
+  
+  @ApiOperation( value = "Realiza aleração de um pedido")
   @PutMapping(produces = {"application/json"}, consumes = {"application/json"})
   public PedidoVO update(@RequestBody PedidoVO pedidoVO) {
     PedidoVO pediVo = pedidosServices.update(pedidoVO);

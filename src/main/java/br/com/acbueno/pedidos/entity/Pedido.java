@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import org.modelmapper.ModelMapper;
 
 import br.com.acbueno.pedidos.data.vo.PedidoVO;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Pedido implements Serializable {
 
   private static final long serialVersionUID = -5416245356894819860L;
@@ -38,7 +40,7 @@ public class Pedido implements Serializable {
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id_pedido")
   private Long id;
-   
+  
   @OneToMany(cascade = CascadeType.ALL)
   @JoinColumn(name="id_pedido")
   //@OneToMany(mappedBy = "pedido",targetEntity = Item.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)

@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import br.com.acbueno.pedidos.entity.Item;
 import br.com.acbueno.pedidos.entity.Pedido;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -25,6 +27,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@ApiModel(value = "PedidoVO")
 public class PedidoVO extends RepresentationModel<PedidoVO> implements Serializable  {
   
   private static final long serialVersionUID = 5966990254459533704L;
@@ -32,6 +35,7 @@ public class PedidoVO extends RepresentationModel<PedidoVO> implements Serializa
   @JsonProperty("id")
   private Long id;
   
+  @ApiModelProperty(value = "itens", required = true)
   @JsonProperty("itens")
   private List<Item> itens;
   
